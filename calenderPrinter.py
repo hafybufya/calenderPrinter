@@ -6,15 +6,16 @@ counter = 0 #counts the number of variables
 #def calender_printer(days_in_month, first_day):
 
 calender_title = ["S", "M" , "T", "W", "T", "F", "S"]
-
-print(calender_title)
+print("  ".join(calender_title))
 
 for i in range(first_day-1):
-    print("_", end = " ") #ensure it prints on same line
+    print("-  ", end="") #ensure it prints on same line
 
 for i in range(1, days_in_month+1):
-    print(i, end= " ")
+    print(f"{i:2}", end=" ")
 
+    if (i + first_day - 1) % 7 == 0:
+        print()  # newline
 
 
 #print_gaps based on the day user selected
