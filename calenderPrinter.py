@@ -10,75 +10,52 @@ min_number_month_days = 28
 max_number_month_days = 31
 
 min_number_week_days = 1
-max_number_week_days: 7
+max_number_week_days = 7
 
 prompts_days_in_month= "How many days are in the month? "
-
-prompt_first_day = "What day of the week does the month start on? (Sun=1, Monday=2, ... Sat= 7) "
-
-    #take user input: number of days in month
-
-#days_in_month = int(input( prompts_days_in_month))
-#days_in_month = 30
-
-    #take user input: day the month starts on
-#first_day = int(input(prompt_first_day))
-#user cant input value > 7
+prompt_first_day = "What day of the week does the month start on? (Sun=1, Mon=2, ..., Sat= 7) "
+prompt_error_handling = "Enter a value between "
 
 
 while True:
     try:
         days_in_month = int(input( prompts_days_in_month))
-        if 28 <= days_in_month <= 31:
+        if min_number_month_days <= days_in_month <= max_number_month_days:
             break
         else:
-            print("Enter a value between 28 to 31")
+            print(f"{prompt_error_handling} {min_number_month_days} to {max_number_month_days}")
     except ValueError:
-        print("Please enter a whole number between 28 - 31") #unhardcode numbers
+        print(f"{prompt_error_handling} {min_number_month_days} to {max_number_month_days}") #unhardcode numbers
         
 while True:
     try:
         first_day  = int(input(prompt_first_day))
-        if 1 <= first_day  <= 7 :
+        if min_number_week_days <= first_day  <= max_number_week_days :
             break
         else:
-            print("Enter a value between 1 to 7")
+            print(f"{prompt_error_handling} {min_number_week_days} to {max_number_week_days}")
     except ValueError:
-        print("Please enter a whole number between 1 to 7") #unhardcode numbers
+        print(f"{prompt_error_handling} {min_number_week_days} to {max_number_week_days}")
         
 
-
-#     #takes number of days in the month
-# for i in range(1, days_in_month+1): 
-#     print(f"{i:2}", end=" ") 
-
-
-
-
  # function to print calendar
+def calender_printer(days_in_month, first_day):
 
+    calender_title = [" S", "M" , "T", "W", "T", "F", "S"]
+    print("  ".join(calender_title)) 
 
-#make sure this only prints if eveyrthing functional !!
+         #makes spaces based on first day of month
+    for i in range(first_day-1):
+        print("   ", end="") # end = "" ensure it prints on same line
 
-# calender_title = ["S", "M" , "T", "W", "T", "F", "S"]
-# print("  ".join(calender_title)) 
+        #takes number of days in the month
+    for i in range(1, days_in_month+1): 
+        print(f"{i:2}", end=" ") 
 
-        #makes spaces based on first day of month
-for i in range(first_day-1):
-    print("   ", end="") # end = "" ensure it prints on same line
+             #new line after every 7th day (including spaces)
+        if (i + first_day - 1) % day_in_week == 0:
+            print()  # newline
 
-
-    #takes number of days in the month
-for i in range(1, days_in_month+1): 
-    print(f"{i:2}", end=" ") 
-
-#     #takes number of days in the month
-# for i in range(1, days_in_month+1): 
-#     print(f"{i:2}", end=" ") 
-
-            #new line after every 7th day (including spaces)
-if (i + first_day - 1) % day_in_week == 0:
-    print()  # newline
-
-
+    return calender_title
 #calls function
+calender_printer(days_in_month, first_day)
