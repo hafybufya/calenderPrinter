@@ -23,13 +23,13 @@ def get_days_in_month():
         try:
             days_in_month = int(input( prompts_days_in_month))
             if min_number_month_days <= days_in_month <= max_number_month_days:
-                break
+                return days_in_month
             else:
                 print(f"{prompt_error_handling} {min_number_month_days} to {max_number_month_days}")
         except ValueError:
             print(f"{prompt_error_handling} {min_number_month_days} to {max_number_month_days}") #unhardcode numbers
 
-        return days_in_month
+        
 
 
 def get_days_in_week():            
@@ -37,13 +37,13 @@ def get_days_in_week():
         try:
             first_day  = int(input(prompt_first_day))
             if min_number_week_days <= first_day  <= max_number_week_days :
-                break
+                return first_day
             else:
                 print(f"{prompt_error_handling} {min_number_week_days} to {max_number_week_days}")
         except ValueError:
             print(f"{prompt_error_handling} {min_number_week_days} to {max_number_week_days}")
 
-        return first_day
+        
 
             
 
