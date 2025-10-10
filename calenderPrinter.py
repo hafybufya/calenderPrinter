@@ -17,26 +17,35 @@ prompt_first_day = "What day of the week does the month start on? (Sun=1, Mon=2,
 prompt_error_handling = "Enter a value between "
 
 
-while True:
-    try:
-        days_in_month = int(input( prompts_days_in_month))
-        if min_number_month_days <= days_in_month <= max_number_month_days:
-            break
-        else:
-            print(f"{prompt_error_handling} {min_number_month_days} to {max_number_month_days}")
-    except ValueError:
-        print(f"{prompt_error_handling} {min_number_month_days} to {max_number_month_days}") #unhardcode numbers
-        
-while True:
-    try:
-        first_day  = int(input(prompt_first_day))
-        if min_number_week_days <= first_day  <= max_number_week_days :
-            break
-        else:
+def get_days_in_month():
+    
+    while True:
+        try:
+            days_in_month = int(input( prompts_days_in_month))
+            if min_number_month_days <= days_in_month <= max_number_month_days:
+                break
+            else:
+                print(f"{prompt_error_handling} {min_number_month_days} to {max_number_month_days}")
+        except ValueError:
+            print(f"{prompt_error_handling} {min_number_month_days} to {max_number_month_days}") #unhardcode numbers
+
+        return days_in_month
+
+
+def get_days_in_week():            
+    while True:
+        try:
+            first_day  = int(input(prompt_first_day))
+            if min_number_week_days <= first_day  <= max_number_week_days :
+                break
+            else:
+                print(f"{prompt_error_handling} {min_number_week_days} to {max_number_week_days}")
+        except ValueError:
             print(f"{prompt_error_handling} {min_number_week_days} to {max_number_week_days}")
-    except ValueError:
-        print(f"{prompt_error_handling} {min_number_week_days} to {max_number_week_days}")
-        
+
+        return first_day
+
+            
 
  # function to print calendar
 def calender_printer(days_in_month, first_day):
@@ -58,4 +67,6 @@ def calender_printer(days_in_month, first_day):
 
     return calender_title
 #calls function
+days_in_month = get_days_in_month()
+first_day = get_days_in_week()
 calender_printer(days_in_month, first_day)
