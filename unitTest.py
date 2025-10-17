@@ -1,16 +1,15 @@
 import unittest
-from  Week3.calenderPrinter import calender_printer
-import os
+from  calenderPrinter import *
 
 # define the unit tests
 class my_unit_tests(unittest.TestCase):
 
         # tests if the days printed are correct
     def test_days(self):
-        self.assertEqual(calender_printer(31, 3), ["S", "M" , "T", "W", "T", "F", "S"])
+        self.assertEqual(calender_printer(31, 3), [" S", "M", "T", "W", "T", "F", "S"])
 
-        #make sure days in month only equal 28, 29, 30, 31
-        
+        #user input only be between min_number_week_days and max_number_week_days
+
 
 # make sure user cant input value greater than 7 for days
 

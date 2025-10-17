@@ -32,7 +32,6 @@ def get_days_in_month():
 
         
 
-
 def get_days_in_week():
     """function which gets the day of the week the month starts on and preforms error handling """               
     while True:
